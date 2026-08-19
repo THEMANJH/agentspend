@@ -281,7 +281,7 @@ export default function Home() {
             contents, and diffs are never read, never logged, and never sent anywhere. You can
             inspect exactly what gets uploaded —{" "}
             <a
-              href="https://github.com/THEMANJH/agentspend/tree/main/uploader"
+              href="https://github.com/THEMANJH/agentspend-upload"
               className="underline underline-offset-2 hover:text-zinc-100"
             >
               the CLI is open source

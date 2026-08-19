@@ -6,7 +6,8 @@ finance manager can't see combined spend" pain point is real and doesn't need
 exaggeration.
 
 Live URL: https://agentspend-alpha.vercel.app
-Uploader source: `agentspend/uploader/` (point people at the GitHub repo once pushed)
+Uploader source (its own public repo): https://github.com/THEMANJH/agentspend-upload
+Anyone can run it with zero signup: `npx github:THEMANJH/agentspend-upload --dry-run`
 
 ---
 

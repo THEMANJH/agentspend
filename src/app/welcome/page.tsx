@@ -60,7 +60,7 @@ function WelcomeContent() {
           <li>
             On each teammate&apos;s machine, run:
             <div className="mono mt-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs text-zinc-300">
-              npx agentspend-upload --key {result.ingestKey} --member yourname
+              npx github:THEMANJH/agentspend-upload --key {result.ingestKey} --member yourname
             </div>
           </li>
           <li>Usage starts flowing in within minutes.</li>
