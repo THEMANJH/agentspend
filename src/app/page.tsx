@@ -48,6 +48,12 @@ export default function Home() {
           <Link href="/dashboard" className="hover:text-zinc-100">
             See a live dashboard
           </Link>
+          <a
+            href="https://github.com/THEMANJH/agentspend"
+            className="hover:text-zinc-100"
+          >
+            GitHub
+          </a>
         </nav>
       </header>
 
@@ -141,7 +147,14 @@ export default function Home() {
             <span className="mono text-accent">usage</span> metadata Anthropic already writes there:
             token counts, model name, project folder name, and a timestamp. Prompt text, file
             contents, and diffs are never read, never logged, and never sent anywhere. You can
-            inspect exactly what gets uploaded — the CLI is open source.
+            inspect exactly what gets uploaded —{" "}
+            <a
+              href="https://github.com/THEMANJH/agentspend/tree/main/uploader"
+              className="underline underline-offset-2 hover:text-zinc-100"
+            >
+              the CLI is open source
+            </a>
+            .
           </p>
         </section>
 
