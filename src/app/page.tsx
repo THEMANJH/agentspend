@@ -35,7 +35,8 @@ const features = [
   },
 ];
 
-const teamCheckoutUrl = process.env.NEXT_PUBLIC_POLAR_CHECKOUT_URL;
+const teamProductId = process.env.NEXT_PUBLIC_POLAR_TEAM_PRODUCT_ID;
+const teamCheckoutUrl = teamProductId ? `/api/checkout?products=${teamProductId}` : undefined;
 
 export default function Home() {
   return (
