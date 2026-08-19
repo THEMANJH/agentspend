@@ -270,23 +270,43 @@ export default function Home() {
         </section>
 
         {/* Privacy */}
-        <section id="privacy" className="mx-auto max-w-3xl px-6 py-20 text-center">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-zinc-500">
+        <section id="privacy" className="mx-auto max-w-3xl px-6 py-20">
+          <h2 className="text-center text-sm font-medium uppercase tracking-wide text-zinc-500">
             What we actually collect
           </h2>
-          <p className="mt-4 text-zinc-300">
-            The AgentSpend CLI parses your local Claude Code logs and extracts only the{" "}
-            <span className="mono text-accent">usage</span> metadata Anthropic already writes there:
-            token counts, model name, project folder name, and a timestamp. Prompt text, file
-            contents, and diffs are never read, never logged, and never sent anywhere. You can
-            inspect exactly what gets uploaded —{" "}
+          <p className="mt-4 text-center text-zinc-300">
+            Some team dashboards work by putting themselves between you and the model — you run
+            their command instead of <span className="mono text-accent">claude</span>, and your
+            file reads and build output pass through their servers. AgentSpend never does that. It
+            reads the log files Claude Code already wrote to your disk, after the fact.
+          </p>
+
+          <p className="mt-8 text-center text-sm text-zinc-400">
+            This is the entire extraction step — every field that ever leaves your machine:
+          </p>
+          <pre className="mono mt-3 overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-950 p-5 text-xs leading-relaxed text-zinc-300">
+            <code>{`events.push({
+  occurred_at:           entry.timestamp,
+  project_label:         path.basename(entry.cwd),   // folder name only
+  model:                 entry.message.model,
+  input_tokens:          usage.input_tokens,
+  output_tokens:         usage.output_tokens,
+  cache_read_tokens:     usage.cache_read_input_tokens,
+  cache_creation_tokens: usage.cache_creation_input_tokens,
+});`}</code>
+          </pre>
+          <p className="mt-4 text-center text-sm text-zinc-400">
+            No prompt text, no file contents, no diffs — there is no line in the collector that
+            reads them. Run{" "}
+            <span className="mono text-zinc-300">npx github:THEMANJH/agentspend-upload --dry-run</span>{" "}
+            to print the exact payload before sending anything, or read{" "}
             <a
-              href="https://github.com/THEMANJH/agentspend-upload"
+              href="https://github.com/THEMANJH/agentspend-upload/blob/main/bin/agentspend-upload.js"
               className="underline underline-offset-2 hover:text-zinc-100"
             >
-              the CLI is open source
+              all ~200 lines of it
             </a>
-            .
+            . Zero dependencies, MIT licensed.
           </p>
         </section>
 
