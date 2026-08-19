@@ -65,10 +65,16 @@ const features = [
 
 const comparison = [
   {
-    label: "Price",
-    free: "Free",
-    others: "$29+/mo",
-    us: "$19/mo",
+    label: "How it collects",
+    free: "Reads local logs",
+    others: "Sits in the request path to route or compress traffic",
+    us: "Reads local logs — nothing sits between you and the API",
+  },
+  {
+    label: "Collector source",
+    free: "Open source",
+    others: "Closed source",
+    us: "Open source — run --dry-run to see the exact payload",
   },
   {
     label: "Team dashboard",
@@ -77,28 +83,22 @@ const comparison = [
     us: "✓",
   },
   {
-    label: "Seats included",
-    free: "1 (your machine only)",
-    others: "~5",
-    us: "10",
-  },
-  {
     label: "Budget alerts",
     free: "—",
-    others: "Sometimes",
+    others: "✓",
     us: "✓ by email",
   },
   {
     label: "History survives log cleanup",
     free: "—",
-    others: "Varies",
+    others: "✓",
     us: "✓",
   },
   {
-    label: "What it touches",
-    free: "Local logs only",
-    others: "Often a proxy in front of your API calls",
-    us: "Local logs only — nothing sits between you and the API",
+    label: "Price",
+    free: "Free",
+    others: "From ~$15/mo",
+    us: "$19/mo, up to 10 people",
   },
 ];
 
@@ -152,13 +152,13 @@ export default function Home() {
             </div>
             <div className="mx-auto mt-10 flex max-w-md items-center justify-center gap-6 text-xs text-zinc-500">
               <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> $19/mo, half the usual price
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> No proxy in your request path
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> 10 seats included
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> 10 people included
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> Open-source CLI
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> Open-source collector
               </span>
             </div>
           </div>
@@ -316,7 +316,7 @@ export default function Home() {
               </div>
               <div className="relative rounded-xl border border-accent/50 bg-accent/5 p-6">
                 <span className="absolute -top-3 left-6 rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-white">
-                  Half the price, double the seats
+                  No proxy, no API keys
                 </span>
                 <h3 className="font-medium text-zinc-100">Team</h3>
                 <p className="mt-1 text-3xl font-semibold text-zinc-50">
