@@ -66,7 +66,7 @@ export async function GET(request: NextRequest) {
 
     if (resend) {
       const { error: sendError } = await resend.emails.send({
-        from: "AgentSpend <alerts@resend.dev>",
+        from: "AgentSpend <onboarding@resend.dev>",
         to: alert.notify_email,
         subject: `${team?.name ?? "Your team"} has used ${Math.round(pctUsed)}% of its Claude Code budget`,
         html: `
