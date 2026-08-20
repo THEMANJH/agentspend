@@ -1,6 +1,10 @@
 # Cold email outreach — drafts (review before sending)
 
-Not sent yet. Waiting on user approval for both the copy and the recipient list.
+**Tier 1 sent 2026-08-20** (all 6: HumanLayer, Ambral, Vulcan, Clubb, Numero, Checkly) via
+Gmail, from kims76403@gmail.com, signed "— AgentSpend". Price corrected to $19/mo (was
+stale $29/mo in this doc) before sending. Tier 2 (Soda, Lithic, WorkMotion, Secfix) not yet
+sent — send after watching Tier 1 for replies/bounces for a few days per the rollout plan
+below.
 
 ## Targeting logic
 
@@ -35,13 +39,13 @@ by person and by project, plus an email alert before you go over budget. Takes
 about 5 minutes to wire up — a small CLI reads local usage logs (token counts
 only, never your code or prompts) and syncs them in.
 
-Free to try solo, $29/mo for a team of up to 10: https://agentspend-alpha.vercel.app
+Free to try solo, $19/mo for a team of up to 10: https://agentspend-alpha.vercel.app
 
 No pressure either way — just curious whether this is actually a problem for
 {{company}} or if you've already got it handled somehow. Happy to hear either
 answer.
 
-{{sender_name}}
+— AgentSpend
 ```
 
 **Notes on the copy:**
