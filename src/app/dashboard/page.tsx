@@ -17,7 +17,7 @@ export default function DashboardPreview() {
 
   return (
     <div className="flex-1 bg-[#08090a]">
-      <header className="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
+      <header className="border-b border-zinc-800 px-6 py-4 flex flex-wrap items-center justify-between gap-2">
         <Link href="/" className="font-semibold tracking-tight text-zinc-100">
           Agent<span className="text-accent">Spend</span>
         </Link>

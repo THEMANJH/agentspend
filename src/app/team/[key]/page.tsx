@@ -55,7 +55,7 @@ function TeamDashboardContent() {
 
   return (
     <div className="flex-1 bg-[#08090a]">
-      <header className="flex items-center justify-between border-b border-zinc-800 px-6 py-4">
+      <header className="flex flex-wrap items-center justify-between gap-2 border-b border-zinc-800 px-6 py-4">
         <Link href="/" className="font-semibold tracking-tight text-zinc-100">
           Agent<span className="text-accent">Spend</span>
         </Link>
