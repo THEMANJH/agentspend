@@ -65,10 +65,10 @@ function WelcomeContent() {
           </li>
           <li>Usage starts flowing in within minutes.</li>
           <li>
-            <Link href="/dashboard" className="underline underline-offset-2">
-              Preview what your dashboard will look like
-            </Link>
-            .
+            <Link href={`/team/${result.ingestKey}`} className="underline underline-offset-2">
+              Open your team dashboard
+            </Link>{" "}
+            — bookmark this link, it&apos;s how you&apos;ll check spend going forward.
           </li>
         </ol>
       </div>
