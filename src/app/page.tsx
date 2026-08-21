@@ -153,10 +153,32 @@ export default function Home() {
               with budget alerts, before the bill surprises you. Flat $19/mo for up to 10 people:
               a cost tracker shouldn&apos;t charge you more as your costs go up.
             </p>
-            <div className="mt-8 flex flex-col items-center gap-3">
-              <WaitlistForm />
+            <div className="mt-8 flex flex-col items-center gap-4">
+              <div className="mono w-full max-w-lg rounded-lg border border-zinc-700 bg-zinc-900/80 px-4 py-3 text-left text-sm text-zinc-300">
+                <span className="select-none text-zinc-600">$ </span>
+                npx github:THEMANJH/agentspend-upload --dry-run
+              </div>
               <p className="text-xs text-zinc-500">
-                The collector CLI is free and open source. We never read your code or prompts —{" "}
+                See your own Claude Code spend right now — free, no signup, nothing uploaded.
+              </p>
+              <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+                {teamCheckoutUrl && (
+                  <a
+                    href={teamCheckoutUrl}
+                    className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent/90"
+                  >
+                    Get the team dashboard — $19/mo
+                  </a>
+                )}
+                <Link
+                  href="/dashboard"
+                  className="rounded-lg border border-zinc-700 px-5 py-2.5 text-sm text-zinc-300 hover:border-zinc-500"
+                >
+                  See a live dashboard
+                </Link>
+              </div>
+              <p className="text-xs text-zinc-500">
+                We never read your code or prompts —{" "}
                 <a href="#privacy" className="underline underline-offset-2 hover:text-zinc-300">
                   see how
                 </a>
@@ -389,9 +411,32 @@ export default function Home() {
         {/* Final CTA */}
         <section id="get-access" className="mx-auto max-w-3xl px-6 py-20 text-center">
           <h2 className="text-2xl font-semibold text-zinc-50">
-            Get early access when it opens.
+            Find out what your team is actually spending.
           </h2>
-          <div className="mt-6 flex justify-center">
+          <p className="mx-auto mt-3 max-w-lg text-sm text-zinc-400">
+            Start with the free CLI on your own machine. When you want the same picture for the
+            whole team, the dashboard is one command and $19/mo away.
+          </p>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+            {teamCheckoutUrl && (
+              <a
+                href={teamCheckoutUrl}
+                className="rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-white hover:bg-accent/90"
+              >
+                Get the team dashboard — $19/mo
+              </a>
+            )}
+            <a
+              href="https://github.com/THEMANJH/agentspend-upload"
+              className="rounded-lg border border-zinc-700 px-5 py-2.5 text-sm text-zinc-300 hover:border-zinc-500"
+            >
+              Get the free CLI
+            </a>
+          </div>
+          <p className="mt-8 text-xs text-zinc-500">
+            Not ready? Leave your email and we&apos;ll tell you when something changes.
+          </p>
+          <div className="mt-3 flex justify-center">
             <WaitlistForm />
           </div>
         </section>
