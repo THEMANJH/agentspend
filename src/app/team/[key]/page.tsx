@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { DailyTrendChart, MemberBarChart, ProjectBarChart } from "@/components/UsageCharts";
+import { BudgetSettings } from "@/components/BudgetSettings";
 import type { DailyTotal, MemberTotal, ProjectTotal } from "@/lib/types";
 
 type TeamSummary = {
@@ -44,6 +45,7 @@ function TeamDashboardContent() {
   const [summary, setSummary] = useState<TeamSummary | null>(null);
   const [error, setError] = useState(false);
   const [days, setDays] = useState(14);
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
     fetch(`/api/team-summary?key=${params.key}&days=${days}`)
@@ -53,7 +55,7 @@ function TeamDashboardContent() {
       })
       .then(setSummary)
       .catch(() => setError(true));
-  }, [params.key, days]);
+  }, [params.key, days, reloadKey]);
 
   if (error) {
     return (
@@ -106,8 +108,10 @@ function TeamDashboardContent() {
               {summary.projectTotals.length === 1 ? "" : "s"}
             </p>
           </div>
-          <div className="flex rounded-lg border border-zinc-800 p-0.5">
-            {RANGES.map((r) => (
+          <div className="flex items-center gap-2">
+            <BudgetSettings teamKey={params.key} onSaved={() => setReloadKey((n) => n + 1)} />
+            <div className="flex rounded-lg border border-zinc-800 p-0.5">
+              {RANGES.map((r) => (
               <button
                 key={r.days}
                 onClick={() => setDays(r.days)}
@@ -117,9 +121,10 @@ function TeamDashboardContent() {
                     : "text-zinc-500 hover:text-zinc-300"
                 }`}
               >
-                {r.label}
-              </button>
-            ))}
+                  {r.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -188,7 +193,11 @@ function TeamDashboardContent() {
 
         {summary.dailyTotals.length === 0 ? (
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/20 p-8 text-center text-sm text-zinc-400">
-            No usage yet. Once teammates run the CLI, spend shows up here within minutes.
+            No usage yet. Run the installer once on each teammate&apos;s machine and spend shows
+            up here within minutes, then keeps updating on its own:
+            <code className="mono mt-2 block break-all text-xs text-zinc-300">
+              npx github:THEMANJH/agentspend-upload --install --key {params.key} --member yourname
+            </code>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
