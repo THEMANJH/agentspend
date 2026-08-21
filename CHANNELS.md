@@ -11,7 +11,7 @@ has 1 karma, but that only blocked us in subs that enforce it. It does not block
 
 | Subreddit | Size | Self-promo rule | Status |
 |---|---|---|---|
-| **r/ClaudeAI** | 1M+ members, **1.81M weekly visitors**, ~24k weekly posts | **Rule 7: "Promoting your project or paid service is encouraged"** | **POSTED 2026-08-22 — went through the mod queue and is now APPROVED and publicly live** |
+| **r/ClaudeAI** | 1M+ members, **1.81M weekly visitors**, ~24k weekly posts | **Rule 7: "Promoting your project or paid service is encouraged"** | **POSTED 2026-08-22 — still held for review, see note below** |
 | **r/ClaudeCode** | very active (recent posts 900+ upvotes) | Rule 4 bans low-effort promo, but **rule 5 allows standalone posts that "explain what you built, how Claude Code was used, and what you learned"**; there is also a pinned **Weekly Showcase Thread** | not yet used — showcase thread is the safest entry |
 | r/claudexplorers | 60,944 | not checked | queued |
 | r/ClaudeCodeTLDR | 3,195 | not checked | queued |
@@ -22,7 +22,15 @@ has 1 karma, but that only blocked us in subs that enforce it. It does not block
 describes what it does and how Claude helped; **free to try, paid tiers explicitly OK**;
 promotional language minimal; no referral links. Rule 9 requires flair → "Built with Claude".
 
-**Live post:** https://www.reddit.com/r/ClaudeAI/comments/1vultfx/ (id `t3_1vultfx`)
+**Post:** https://www.reddit.com/r/ClaudeAI/comments/1vultfx/ (id `t3_1vultfx`)
+
+**Its status, precisely.** The page shows "Sorry, this post was removed by Reddit's filters",
+which looks like a rejection but is not: r/ClaudeAI's own AutoModerator replied on the thread
+with *"Your post will be reviewed shortly. (ALL posts are processed like this. Please wait a
+few minutes....)"*. So every post here is filtered pending review, and ours is sitting in that
+queue. It had not cleared after ~30 minutes. **Check again before concluding anything, and do
+not repost** — a duplicate would be a genuine spam signal. If it is still held after several
+hours, message the mods via the link in that AutoModerator comment rather than reposting.
 
 Evidence the topic lands there: a post titled "The Absurd Math of $20 AI Coding Subs" drew
 **156 comments** — people are already arguing about Claude Code cost in these subs.
