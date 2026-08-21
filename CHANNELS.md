@@ -11,7 +11,7 @@ has 1 karma, but that only blocked us in subs that enforce it. It does not block
 
 | Subreddit | Size | Self-promo rule | Status |
 |---|---|---|---|
-| **r/ClaudeAI** | 1M+ members, **1.81M weekly visitors**, ~24k weekly posts | **Rule 7: "Promoting your project or paid service is encouraged"** | **POSTED 2026-08-22 — awaiting mod approval** |
+| **r/ClaudeAI** | 1M+ members, **1.81M weekly visitors**, ~24k weekly posts | **Rule 7: "Promoting your project or paid service is encouraged"** | **POSTED 2026-08-22 — went through the mod queue and is now APPROVED and publicly live** |
 | **r/ClaudeCode** | very active (recent posts 900+ upvotes) | Rule 4 bans low-effort promo, but **rule 5 allows standalone posts that "explain what you built, how Claude Code was used, and what you learned"**; there is also a pinned **Weekly Showcase Thread** | not yet used — showcase thread is the safest entry |
 | r/claudexplorers | 60,944 | not checked | queued |
 | r/ClaudeCodeTLDR | 3,195 | not checked | queued |
@@ -46,18 +46,28 @@ company**. Early relaunch needs a manual request, and PH states outright that **
 pricing plan changes, etc. are not considered significant updates"** — which is exactly what
 our recent work is. Earliest clean relaunch ≈ **2027-02-20**.
 
-## Directories — free, unblocked, and aimed at buying intent
+## Directories — high value, but blocked on account creation (user task)
 
-Not yet submitted. The reason these matter more than they look: they rank for **comparison
-queries** ("ccusage alternative", "Claude Code cost tracking for teams"), which is late-funnel
-traffic rather than idle browsing.
+These matter because they rank for **comparison queries** ("ccusage alternative", "Claude Code
+cost tracking for teams") — late-funnel traffic rather than idle browsing.
 
-- **AlternativeTo** — free; the whole site is alternative-to-X queries, which is our exact wedge
-- **StackShare** — free; ~622K monthly visits, developers comparing tool stacks
-- **LibHunt**, **OpenAlternative** — free, open-source oriented, good fit for the CLI
+**Attempted 2026-08-22 and blocked. Every one requires an account, and account creation is
+exactly what cannot be automated here:**
 
-Prep once, submit to all: 10-word tagline, 60-word description, 300-word description, square
-logo, three screenshots. We already have the logo and screenshots from the PH launch.
+| Directory | What happened |
+|---|---|
+| **AlternativeTo** | Google OAuth completes, then the site refuses: *"Google Signup is disabled for now… Please use a username and password or another social provider"* (ref code `google_disabled`). GitHub OAuth button is inert under automation — GitHub's own authorize page loads but the Authorize button does nothing, by coordinate or by element ref. |
+| **StackShare** | Offers GitHub and Google. Google button enters a loading spinner and never resolves. |
+
+Password signup is not an option for an agent, so **these need ~10 minutes of the user's time**.
+Once an account exists, submitting listings can be automated.
+
+For whoever does it, the asset pack is already available from the Product Hunt launch: square
+logo, four screenshots, tagline "Team spend visibility for Claude Code", and the 60/300-word
+descriptions can be lifted from the landing page hero and privacy sections.
+
+Still worth trying later: **LibHunt**, **OpenAlternative** — open-source oriented, may accept
+a GitHub-repo-based submission without a full account.
 
 ## Blocked / not worth it
 
