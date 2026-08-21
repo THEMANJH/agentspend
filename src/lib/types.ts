@@ -14,6 +14,8 @@ export type MemberTotal = {
   member: string;
   costUsd: number;
   sessions: number;
+  /** When this member's machine last synced. Absent on the demo dashboard. */
+  lastSyncedAt?: string | null;
 };
 
 export type DailyTotal = {

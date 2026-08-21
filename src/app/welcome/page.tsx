@@ -58,10 +58,17 @@ function WelcomeContent() {
         <p className="font-medium text-zinc-100">Next steps</p>
         <ol className="list-decimal space-y-2 pl-5">
           <li>
-            On each teammate&apos;s machine, run:
-            <div className="mono mt-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs text-zinc-300">
-              npx github:THEMANJH/agentspend-upload --key {result.ingestKey} --member yourname
+            On each teammate&apos;s machine, run this once:
+            <div className="mono mt-1 break-all rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs text-zinc-300">
+              npx github:THEMANJH/agentspend-upload --install --key {result.ingestKey} --member
+              yourname
             </div>
+            <p className="mt-1 text-xs text-zinc-500">
+              <code className="mono">--install</code> sets up a background job that syncs every
+              30 minutes, so nobody has to remember to re-run anything. Add{" "}
+              <code className="mono">--dry-run</code> first to see exactly what it installs, or
+              drop <code className="mono">--install</code> for a one-off sync.
+            </p>
           </li>
           <li>Usage starts flowing in within minutes.</li>
           <li>

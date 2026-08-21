@@ -4,7 +4,7 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 const steps = [
   {
     title: "Install the CLI",
-    body: "One command on each teammate's machine. It reads your existing local Claude Code logs — nothing new to configure.",
+    body: "One command on each teammate's machine, once. It reads your existing local Claude Code logs and then keeps syncing every 30 minutes on its own — nothing new to configure, nothing to remember.",
   },
   {
     title: "Connect your team",
@@ -81,6 +81,12 @@ const comparison = [
     free: "—",
     others: "✓",
     us: "✓",
+  },
+  {
+    label: "Staying up to date",
+    free: "You run it when you want a number",
+    others: "Automatic — traffic flows through them",
+    us: "Automatic — background job on each machine, and the dashboard names anyone who stops syncing",
   },
   {
     label: "Budget alerts",

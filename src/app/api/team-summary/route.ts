@@ -73,12 +73,34 @@ export async function GET(request: NextRequest) {
     byProject.set(e.project_label, (byProject.get(e.project_label) ?? 0) + Number(e.cost_usd));
   }
 
+  // Freshness. A spend dashboard is only worth opening if you can tell how
+  // current it is, and whether one teammate's machine has quietly stopped
+  // syncing. Ordered by receipt time, so it is unaffected by the range above.
+  const { data: recent } = await supabase
+    .from("usage_events")
+    .select("created_at, members(label)")
+    .eq("team_id", team.id)
+    .order("created_at", { ascending: false })
+    .limit(200);
+
+  const lastSyncByMember = new Map<string, string>();
+  for (const r of recent ?? []) {
+    const row = Array.isArray(r.members) ? r.members[0] : r.members;
+    const label = row?.label ?? "unknown";
+    if (!lastSyncByMember.has(label)) lastSyncByMember.set(label, r.created_at);
+  }
+  const lastSyncedAt = recent?.[0]?.created_at ?? null;
+
   const dailyTotals: DailyTotal[] = Array.from(byDay.entries())
     .map(([date, costUsd]) => ({ date, costUsd: Math.round(costUsd * 100) / 100 }))
     .sort((a, b) => a.date.localeCompare(b.date));
 
   const memberTotals: MemberTotal[] = Array.from(byMember.values())
-    .map((m) => ({ ...m, costUsd: Math.round(m.costUsd * 100) / 100 }))
+    .map((m) => ({
+      ...m,
+      costUsd: Math.round(m.costUsd * 100) / 100,
+      lastSyncedAt: lastSyncByMember.get(m.member) ?? null,
+    }))
     .sort((a, b) => b.costUsd - a.costUsd);
 
   const projectTotals: ProjectTotal[] = Array.from(byProject.entries())
@@ -91,6 +113,7 @@ export async function GET(request: NextRequest) {
     teamName: team.name,
     monthlyBudgetUsd: team.monthly_budget_usd,
     days,
+    lastSyncedAt,
     totalSpend,
     activeMembers: memberTotals.length,
     dailyTotals,
