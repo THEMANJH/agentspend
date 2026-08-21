@@ -2,9 +2,14 @@
 
 **Tier 1 sent 2026-08-20** (all 6: HumanLayer, Ambral, Vulcan, Clubb, Numero, Checkly) via
 Gmail, from kims76403@gmail.com, signed "— AgentSpend". Price corrected to $19/mo (was
-stale $29/mo in this doc) before sending. Tier 2 (Soda, Lithic, WorkMotion, Secfix) not yet
-sent — send after watching Tier 1 for replies/bounces for a few days per the rollout plan
-below.
+stale $29/mo in this doc) before sending.
+
+**Tier 2 sent 2026-08-21** (all 4: Soda, Lithic, WorkMotion, Secfix) — same template, greeted
+as "Hi {{company}} team," since no named contact was found for any of them. Secfix's opener
+was softened ("Figured your engineering team might already be running Claude Code day to
+day...") instead of the standard "Saw {{company}} is hiring for roles that use Claude Code"
+line, since their evidence was weaker (job posting said "Claude" generically, not explicitly
+"Claude Code"). **All 10 researched prospects have now been contacted.**
 
 ## Targeting logic
 

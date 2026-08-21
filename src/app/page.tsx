@@ -85,19 +85,25 @@ const comparison = [
   {
     label: "Budget alerts",
     free: "—",
-    others: "✓",
-    us: "✓ by email",
+    others: "Often an upgrade — one charges $49.99/mo for them",
+    us: "✓ by email, included at the base price",
   },
   {
     label: "History survives log cleanup",
     free: "—",
-    others: "✓",
+    others: "✓ — one caps history at 45 days on its entry plan",
     us: "✓",
+  },
+  {
+    label: "Cost as your team's spend grows",
+    free: "Free",
+    others: "One meters you: $500/mo tracked, then $7.50 per extra $250",
+    us: "Flat — you are never charged more for tracking more",
   },
   {
     label: "Price",
     free: "Free",
-    others: "From ~$15/mo",
+    others: "$14.99–$59/mo across entry and mid tiers",
     us: "$19/mo, up to 10 people",
   },
 ];
@@ -138,7 +144,8 @@ export default function Home() {
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg text-zinc-400">
               AgentSpend turns everyone&apos;s local Claude Code usage logs into one team dashboard —
-              with budget alerts, before the bill surprises you.
+              with budget alerts, before the bill surprises you. Flat $19/mo for up to 10 people:
+              a cost tracker shouldn&apos;t charge you more as your costs go up.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3">
               <WaitlistForm />
@@ -155,7 +162,7 @@ export default function Home() {
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> No proxy in your request path
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> 10 people included
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> Flat $19 — never metered on your spend
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> Open-source collector
@@ -267,6 +274,11 @@ export default function Home() {
               </tbody>
             </table>
           </div>
+          <p className="mt-4 text-center text-xs text-zinc-600">
+            &ldquo;Other paid dashboards&rdquo; reflects the published pricing pages of the two
+            comparable Claude Code spend dashboards we could find, checked 22 Aug 2026. Their
+            plans change — please verify before you decide.
+          </p>
         </section>
 
         {/* Privacy */}
