@@ -8,6 +8,9 @@ import type { DailyTotal, MemberTotal, ProjectTotal } from "@/lib/types";
  * for the CLI (see /welcome), so reusing it as the read-access token here
  * avoids needing a separate auth system for a v1.
  */
+/** Selectable dashboard windows, in days. 0 = the team's entire history. */
+const ALLOWED_RANGES = [14, 30, 90, 0];
+
 export async function GET(request: NextRequest) {
   const key = request.nextUrl.searchParams.get("key");
   if (!key) {
@@ -29,14 +32,24 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "team not found" }, { status: 404 });
   }
 
-  const since = new Date();
-  since.setUTCDate(since.getUTCDate() - 14);
+  // `days=0` means the team's whole retained history — nothing is ever
+  // pruned server-side, so the pricing page's "unlimited history" is
+  // something the dashboard can actually show, not just something we store.
+  const daysParam = Number(request.nextUrl.searchParams.get("days") ?? 14);
+  const days = ALLOWED_RANGES.includes(daysParam) ? daysParam : 14;
 
-  const { data: events, error: eventsError } = await supabase
+  let query = supabase
     .from("usage_events")
     .select("occurred_at, cost_usd, project_label, member_id, members(label)")
-    .eq("team_id", team.id)
-    .gte("occurred_at", since.toISOString());
+    .eq("team_id", team.id);
+
+  if (days > 0) {
+    const since = new Date();
+    since.setUTCDate(since.getUTCDate() - days);
+    query = query.gte("occurred_at", since.toISOString());
+  }
+
+  const { data: events, error: eventsError } = await query;
 
   if (eventsError) {
     return NextResponse.json({ error: "query failed" }, { status: 500 });
@@ -77,6 +90,7 @@ export async function GET(request: NextRequest) {
   return NextResponse.json({
     teamName: team.name,
     monthlyBudgetUsd: team.monthly_budget_usd,
+    days,
     totalSpend,
     activeMembers: memberTotals.length,
     dailyTotals,

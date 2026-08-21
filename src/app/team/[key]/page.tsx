@@ -16,20 +16,28 @@ type TeamSummary = {
   projectTotals: ProjectTotal[];
 };
 
+const RANGES = [
+  { days: 14, label: "14 days" },
+  { days: 30, label: "30 days" },
+  { days: 90, label: "90 days" },
+  { days: 0, label: "All time" },
+];
+
 function TeamDashboardContent() {
   const params = useParams<{ key: string }>();
   const [summary, setSummary] = useState<TeamSummary | null>(null);
   const [error, setError] = useState(false);
+  const [days, setDays] = useState(14);
 
   useEffect(() => {
-    fetch(`/api/team-summary?key=${params.key}`)
+    fetch(`/api/team-summary?key=${params.key}&days=${days}`)
       .then((res) => {
         if (!res.ok) throw new Error("not found");
         return res.json();
       })
       .then(setSummary)
       .catch(() => setError(true));
-  }, [params.key]);
+  }, [params.key, days]);
 
   if (error) {
     return (
@@ -65,19 +73,39 @@ function TeamDashboardContent() {
       </header>
 
       <main className="mx-auto max-w-5xl space-y-8 px-6 py-10">
-        <div>
-          <h1 className="text-2xl font-semibold text-zinc-50">
-            {summary.teamName ?? "Your team"} — Claude Code spend
-          </h1>
-          <p className="mt-1 text-sm text-zinc-400">
-            Last 14 days, {summary.activeMembers} member{summary.activeMembers === 1 ? "" : "s"},{" "}
-            {summary.projectTotals.length} project{summary.projectTotals.length === 1 ? "" : "s"}
-          </p>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-semibold text-zinc-50">
+              {summary.teamName ?? "Your team"} — Claude Code spend
+            </h1>
+            <p className="mt-1 text-sm text-zinc-400">
+              {days === 0 ? "All time" : `Last ${days} days`}, {summary.activeMembers} member
+              {summary.activeMembers === 1 ? "" : "s"}, {summary.projectTotals.length} project
+              {summary.projectTotals.length === 1 ? "" : "s"}
+            </p>
+          </div>
+          <div className="flex rounded-lg border border-zinc-800 p-0.5">
+            {RANGES.map((r) => (
+              <button
+                key={r.days}
+                onClick={() => setDays(r.days)}
+                className={`rounded-md px-3 py-1 text-xs transition ${
+                  days === r.days
+                    ? "bg-zinc-800 text-zinc-100"
+                    : "text-zinc-500 hover:text-zinc-300"
+                }`}
+              >
+                {r.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
-            <p className="text-xs uppercase tracking-wide text-zinc-500">Total spend (14d)</p>
+            <p className="text-xs uppercase tracking-wide text-zinc-500">
+              Total spend ({days === 0 ? "all time" : `${days}d`})
+            </p>
             <p className="mt-2 text-3xl font-semibold text-zinc-50">
               ${summary.totalSpend.toFixed(2)}
             </p>

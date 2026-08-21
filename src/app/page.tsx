@@ -30,7 +30,7 @@ const features = [
   },
   {
     title: "Budget alerts",
-    body: "Set a monthly ceiling per team or per project. Get an email before you go over — not an invoice after.",
+    body: "Set a monthly ceiling for the team. Get an email when you cross your threshold — before the invoice, not after.",
     icon: (
       <path
         strokeLinecap="round"
@@ -140,7 +140,7 @@ export default function Home() {
               For teams shipping with Claude Code
             </p>
             <h1 className="mx-auto max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-zinc-50 sm:text-5xl">
-              Know what your team actually spends on AI coding agents.
+              Know what your team actually spends on Claude Code.
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-lg text-zinc-400">
               AgentSpend turns everyone&apos;s local Claude Code usage logs into one team dashboard —
@@ -150,7 +150,7 @@ export default function Home() {
             <div className="mt-8 flex flex-col items-center gap-3">
               <WaitlistForm />
               <p className="text-xs text-zinc-500">
-                Free for solo use. No credit card. We never read your code or prompts —{" "}
+                The collector CLI is free and open source. We never read your code or prompts —{" "}
                 <a href="#privacy" className="underline underline-offset-2 hover:text-zinc-300">
                   see how
                 </a>
@@ -330,20 +330,26 @@ export default function Home() {
             </h2>
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
-                <h3 className="font-medium text-zinc-100">Solo</h3>
+                <h3 className="font-medium text-zinc-100">Solo — the CLI alone</h3>
                 <p className="mt-1 text-3xl font-semibold text-zinc-50">
                   $0<span className="text-base font-normal text-zinc-500">/mo</span>
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-zinc-400">
-                  <li>1 member</li>
-                  <li>7-day rolling history</li>
-                  <li>Daily &amp; per-project breakdown</li>
+                  <li>Open-source collector, run it on your own machine</li>
+                  <li>
+                    <code className="mono text-xs text-zinc-300">--dry-run</code> prints your own
+                    usage locally
+                  </li>
+                  <li>No account, no signup, nothing uploaded</li>
+                  <li className="text-zinc-500">
+                    The hosted dashboard and alerts are Team-only today.
+                  </li>
                 </ul>
                 <a
-                  href="#get-access"
+                  href="https://github.com/THEMANJH/agentspend-upload"
                   className="mt-5 block rounded-lg border border-zinc-700 px-4 py-2 text-center text-sm text-zinc-300 hover:border-zinc-500"
                 >
-                  Join waitlist
+                  Get the CLI on GitHub
                 </a>
               </div>
               <div className="relative rounded-xl border border-accent/50 bg-accent/5 p-6">
@@ -356,8 +362,8 @@ export default function Home() {
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-zinc-300">
                   <li>Up to 10 members</li>
-                  <li>Unlimited history</li>
-                  <li>Budget alerts by email</li>
+                  <li>Full history — 14/30/90-day and all-time views</li>
+                  <li>Team budget alerts by email</li>
                   <li>Per-member &amp; per-project breakdown</li>
                 </ul>
                 <a
@@ -386,8 +392,8 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-zinc-800 px-6 py-8 text-center text-xs text-zinc-600">
-        AgentSpend is an independent tool built for teams using Claude Code and other AI coding
-        agents. Not affiliated with or endorsed by Anthropic.
+        AgentSpend is an independent tool built for teams using Claude Code. Not affiliated with
+        or endorsed by Anthropic.
       </footer>
     </div>
   );

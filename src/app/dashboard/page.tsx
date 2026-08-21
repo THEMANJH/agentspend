@@ -51,7 +51,7 @@ export default function DashboardPreview() {
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-5">
             <p className="text-xs uppercase tracking-wide text-zinc-500">Active members</p>
             <p className="mt-2 text-3xl font-semibold text-zinc-50">{byMember.length}</p>
-            <p className="mt-1 text-xs text-zinc-500">syncing from local CLI every 15 min</p>
+            <p className="mt-1 text-xs text-zinc-500">synced from each member&apos;s local CLI</p>
           </div>
         </div>
 

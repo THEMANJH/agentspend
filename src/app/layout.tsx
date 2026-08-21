@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "AgentSpend — Team spend visibility for Claude Code",
   description:
-    "See what your whole team spends on Claude Code and other AI coding agents. One dashboard, budget alerts, no code ever leaves your machine.",
+    "See what your whole team spends on Claude Code. One dashboard, budget alerts, no code ever leaves your machine.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
