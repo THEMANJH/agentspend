@@ -152,12 +152,17 @@ export default function UsageLogsGuide() {
           <h2 className="pt-6 text-xl font-semibold text-zinc-100">Reading it yourself</h2>
           <p>
             You do not need us for any of this. Our collector is open source and dependency-free,
-            and <code className="mono text-zinc-100">--dry-run</code> prints the exact payload it
-            would upload while sending nothing:
+            and it will do the arithmetic above against your own logs — no key, no account,
+            nothing uploaded:
           </p>
           <pre className="mono overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-900/60 p-4 text-sm text-zinc-300">
-            npx github:THEMANJH/agentspend-upload --dry-run
+            npx github:THEMANJH/agentspend-upload --report
           </pre>
+          <p>
+            If you would rather see the raw payload a team sync would send instead of a summary,{" "}
+            <code className="mono text-zinc-100">--dry-run</code> prints exactly that and uploads
+            nothing.
+          </p>
           <p>
             It reads only the four token counts, the model name, the project folder name and the
             timestamp — never prompt text or file contents. You can confirm that in about two

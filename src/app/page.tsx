@@ -159,10 +159,10 @@ export default function Home() {
             <div className="mt-8 flex flex-col items-center gap-4">
               <div className="mono w-full max-w-lg rounded-lg border border-zinc-700 bg-zinc-900/80 px-4 py-3 text-left text-sm text-zinc-300">
                 <span className="select-none text-zinc-600">$ </span>
-                npx github:THEMANJH/agentspend-upload --dry-run
+                npx github:THEMANJH/agentspend-upload --report
               </div>
               <p className="text-xs text-zinc-500">
-                See your own Claude Code spend right now — free, no signup, nothing uploaded.
+                Your own spend by project, model and day — free, no signup, nothing uploaded.
               </p>
               <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
                 {teamCheckoutUrl && (
@@ -366,11 +366,11 @@ export default function Home() {
                   $0<span className="text-base font-normal text-zinc-500">/mo</span>
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-zinc-400">
-                  <li>Open-source collector, run it on your own machine</li>
                   <li>
-                    <code className="mono text-xs text-zinc-300">--dry-run</code> prints your own
-                    usage locally
+                    <code className="mono text-xs text-zinc-300">--report</code> breaks your own
+                    usage down by project, model and day
                   </li>
+                  <li>Open source, zero dependencies, one file you can read</li>
                   <li>No account, no signup, nothing uploaded</li>
                   <li className="text-zinc-500">
                     The hosted dashboard and alerts are Team-only today.
