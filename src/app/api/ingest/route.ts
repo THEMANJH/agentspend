@@ -18,6 +18,9 @@ type IngestBody = {
   events?: IngestEvent[];
 };
 
+/** Seats per plan, matching what the pricing page advertises. */
+const SEAT_LIMITS: Record<string, number> = { solo: 1, team: 10 };
+
 export async function POST(request: NextRequest) {
   let body: IngestBody;
   try {
@@ -41,12 +44,41 @@ export async function POST(request: NextRequest) {
 
   const { data: team, error: teamError } = await supabase
     .from("teams")
-    .select("id")
+    .select("id, plan")
     .eq("ingest_key", teamKey)
     .single();
 
   if (teamError || !team) {
     return NextResponse.json({ error: "invalid team key" }, { status: 401 });
+  }
+
+  // Seat limits. Only ever block a *new* member: someone already on the team
+  // must keep syncing no matter what, otherwise enforcement would silently
+  // corrupt the spend figures a paying customer is looking at.
+  const { data: existing } = await supabase
+    .from("members")
+    .select("id")
+    .eq("team_id", team.id)
+    .eq("label", member)
+    .maybeSingle();
+
+  if (!existing) {
+    const { count } = await supabase
+      .from("members")
+      .select("id", { count: "exact", head: true })
+      .eq("team_id", team.id);
+
+    const seatLimit = SEAT_LIMITS[team.plan] ?? SEAT_LIMITS.solo;
+    if ((count ?? 0) >= seatLimit) {
+      return NextResponse.json(
+        {
+          error: `This team is on the ${team.plan} plan, which covers ${seatLimit} member${
+            seatLimit === 1 ? "" : "s"
+          }. "${member}" would be number ${(count ?? 0) + 1}.`,
+        },
+        { status: 402 },
+      );
+    }
   }
 
   const { data: memberRow, error: memberError } = await supabase
