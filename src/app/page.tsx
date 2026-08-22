@@ -125,6 +125,9 @@ export default function Home() {
           Agent<span className="text-accent">Spend</span>
         </span>
         <nav className="flex items-center gap-5 text-sm text-zinc-400">
+          <Link href="/guides/claude-code-usage-logs" className="hover:text-zinc-100">
+            Usage log guide
+          </Link>
           <Link href="/dashboard" className="hover:text-zinc-100">
             See a live dashboard
           </Link>
