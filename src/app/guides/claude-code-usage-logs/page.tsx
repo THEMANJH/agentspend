@@ -169,6 +169,18 @@ export default function UsageLogsGuide() {
             minutes by reading the source, which is one file.
           </p>
 
+          <p className="pt-4">
+            Related:{" "}
+            <Link
+              href="/guides/what-drives-claude-code-cost"
+              className="underline underline-offset-2 hover:text-zinc-100"
+            >
+              What actually drives your Claude Code bill
+            </Link>{" "}
+            — the same dataset broken down by model and project, including why Opus turns cost
+            4.5x more than Sonnet turns while using fewer tokens.
+          </p>
+
           <div className="mt-10 rounded-xl border border-zinc-800 bg-zinc-900/40 p-6">
             <h2 className="text-lg font-semibold text-zinc-100">
               If you need this for a whole team
