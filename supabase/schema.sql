@@ -17,8 +17,14 @@ create table if not exists teams (
   plan text not null default 'solo' check (plan in ('solo', 'team')),
   monthly_budget_usd numeric(10, 2),
   polar_subscription_id text,
+  -- Set by the Polar order.paid webhook. /welcome polls team-lookup by this
+  -- value to hand the buyer their ingest key, so a database built without
+  -- this column makes every purchase fail silently.
+  checkout_id text,
   created_at timestamptz not null default now()
 );
+alter table teams add column if not exists checkout_id text;
+create index if not exists teams_checkout_id_idx on teams (checkout_id);
 
 create table if not exists members (
   id uuid primary key default gen_random_uuid(),
